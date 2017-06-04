@@ -19,14 +19,14 @@ if(isset($_GET['delete_id']))
 <script type="text/javascript">
 function edt_id(id)
 {
-	if(confirm('Tem certeza que desejas Alterar a empresa ?'))
+	if(confirm('Deseja Alterar a empresa ?'))
 	{
 		window.location.href='edit_data.php?edit_id='+id;
 	}
 }
 function delete_id(id)
 {
-	if(confirm('Tem certeza, que desejas excluir a empresa ?'))
+	if(confirm('Deseja excluir a empresa ?'))
 	{
 		window.location.href='index.php?delete_id='+id;
 	}
