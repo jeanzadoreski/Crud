@@ -3,18 +3,21 @@ include_once 'dbconfig.php';
 if(isset($_POST['btn-save']))
 {
 	
-	$first_name = $_POST['first_name'];
-	$last_name = $_POST['last_name'];
-	$city_name = $_POST['city_name'];
+	$razao = $_POST['razao'];
+	$nome = $_POST['nome'];
+	$cnpj = $_POST['cnpj'];
+	$ddd = $_POST['ddd'];
+	$telefone = $_POST['telefone'];
+	$site = $_POST['site'];
 	
 	
-	$sql_query = "INSERT INTO users(first_name,last_name,user_city) VALUES('$first_name','$last_name','$city_name')";
+	$sql_query = "INSERT INTO empresa(razao,nome,cnpj,ddd,telefone,site) VALUES('$razao','$nome','$cnpj','$ddd','$telefone','$site')";
 		
 	if(mysql_query($sql_query))
 	{
 		?>
 		<script type="text/javascript">
-		alert('Data Are Inserted Successfully ');
+		alert('Os dados foram inseridos com sucesso ! ');
 		window.location.href='index.php';
 		</script>
 		<?php
@@ -23,7 +26,7 @@ if(isset($_POST['btn-save']))
 	{
 		?>
 		<script type="text/javascript">
-		alert('error occured while inserting your data');
+		alert('Ocorreu um erro ao inserir seus dados !');
 		</script>
 		<?php
 	}
@@ -34,7 +37,7 @@ if(isset($_POST['btn-save']))
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>CRUD Operations With PHP and MySql - By Coding Cage</title>
+<title>Cadastro de Empresas</title>
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 <body>
@@ -42,7 +45,7 @@ if(isset($_POST['btn-save']))
 
 <div id="header">
 	<div id="content">
-    <label>CRUD Operations With PHP and MySql - <a href="http://www.codingcage.com" target="_blank">By Coding Cage</a></label>
+    <label>Caddastro de Empresas</label>
     </div>
 </div>
 <div id="body">
@@ -50,19 +53,28 @@ if(isset($_POST['btn-save']))
     <form method="post">
     <table align="center">
     <tr>
-    <td align="center"><a href="index.php">back to main page</a></td>
+    <td align="center"><a href="index.php">Voltar para a pagina principal</a></td>
     </tr>
     <tr>
-    <td><input type="text" name="first_name" placeholder="First Name" required /></td>
+    <td><input type="text" name="razao" placeholder="Razao Social" maxlength=25 required /></td>
     </tr>
     <tr>
-    <td><input type="text" name="last_name" placeholder="Last Name" required /></td>
+    <td><input type="text" name="nome" placeholder="Nome Fantasia" maxlength=50 required /></td>
     </tr>
     <tr>
-    <td><input type="text" name="city_name" placeholder="City" required /></td>
+    <td><input type="text" name="cnpj" placeholder="CNPJ" maxlength=11 required /></td>
     </tr>
     <tr>
-    <td><button type="submit" name="btn-save"><strong>SAVE</strong></button></td>
+    <td><input type="text" name="ddd" placeholder="DDD" maxlength=3 required /></td>
+    </tr>
+    <tr>
+    <td><input type="text" name="telefone" placeholder="Telefone" maxlength=8 required /></td>
+    </tr>
+    <tr>
+    <td><input type="text" name="site" placeholder="SITE" maxlength=100 required /></td>
+    </tr>
+    <tr>
+    <td><button type="submit" name="btn-save"><strong>SALVAR</strong></button></td>
     </tr>
     </table>
     </form>
