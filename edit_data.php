@@ -9,17 +9,20 @@ if(isset($_GET['edit_id']))
 if(isset($_POST['btn-update']))
 {
 	
-	$first_name = $_POST['first_name'];
-	$last_name = $_POST['last_name'];
-	$city_name = $_POST['city_name'];
+	$razao = $_POST['razao'];
+	$nome = $_POST['nome'];
+	$cnpj = $_POST['cnpj'];
+	$ddd = $_POST['ddd'];
+	$telefone = $_POST['telefone'];
+	$site = $_POST['site'];
 	
-	$sql_query = "UPDATE users SET first_name='$first_name',last_name='$last_name',user_city='$city_name' WHERE user_id=".$_GET['edit_id'];
+	$sql_query = "UPDATE empresa SET razao='$razao',nome='$nome',cnpj='$cnpj',ddd='$ddd',telefone='$telefone',site='$site' WHERE id=".$_GET['edit_id'];
 	
 	if(mysql_query($sql_query))
 	{
 		?>
 		<script type="text/javascript">
-		alert('Data Are Updated Successfully');
+		alert('Os dados foram atualizados com sucesso !');
 		window.location.href='index.php';
 		</script>
 		<?php
@@ -28,11 +31,10 @@ if(isset($_POST['btn-update']))
 	{
 		?>
 		<script type="text/javascript">
-		alert('error occured while updating data');
+		alert('Ocorreu um erro ao atualizar os dados');
 		</script>
 		<?php
 	}
-	// sql query execution function
 }
 if(isset($_POST['btn-cancel']))
 {
@@ -43,7 +45,7 @@ if(isset($_POST['btn-cancel']))
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>CRUD Operations With PHP and MySql - By Coding Cage</title>
+<title>Cadastro de Empresas</title>
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 <body>
@@ -51,7 +53,7 @@ if(isset($_POST['btn-cancel']))
 
 <div id="header">
 	<div id="content">
-    <label>CRUD Operations With PHP and MySql - <a href="http://www.codingcage.com" target="_blank">By Coding Cage</a></label>
+    <label>Cadastro de Empresas</label>
     </div>
 </div>
 
@@ -60,18 +62,27 @@ if(isset($_POST['btn-cancel']))
     <form method="post">
     <table align="center">
     <tr>
-    <td><input type="text" name="first_name" placeholder="First Name" value="<?php echo $fetched_row['first_name']; ?>" required /></td>
+    <td><input type="text" name="razao" placeholder="Razao Social" value="<?php echo $fetched_row['razao']; ?>" maxlength=25 required /></td>
     </tr>
     <tr>
-    <td><input type="text" name="last_name" placeholder="Last Name" value="<?php echo $fetched_row['last_name']; ?>" required /></td>
+    <td><input type="text" name="nome" placeholder="Nome Fantasia" value="<?php echo $fetched_row['nome']; ?>" maxlength=50 required /></td>
     </tr>
     <tr>
-    <td><input type="text" name="city_name" placeholder="City" value="<?php echo $fetched_row['user_city']; ?>" required /></td>
+    <td><input type="text" name="cnpj" placeholder="CNPJ" value="<?php echo $fetched_row['cnpj']; ?>" maxlength=11 required /></td>
+    </tr>
+    <tr>
+    <td><input type="text" name="ddd" placeholder="DDD" value="<?php echo $fetched_row['ddd']; ?>" maxlength=3 required /></td>
+    </tr>
+    <tr>
+    <td><input type="text" name="telefone" placeholder="Telefone" value="<?php echo $fetched_row['telefone']; ?>" maxlength=8 required /></td>
+    </tr>
+    <tr>
+    <td><input type="text" name="site" placeholder="SITE" value="<?php echo $fetched_row['site']; ?>" maxlength=100 required /></td>
     </tr>
     <tr>
     <td>
-    <button type="submit" name="btn-update"><strong>UPDATE</strong></button>
-    <button type="submit" name="btn-cancel"><strong>Cancel</strong></button>
+    <button type="submit" name="btn-update"><strong>ALTERAR</strong></button>
+    <button type="submit" name="btn-cancel"><strong>CANCELAR</strong></button>
     </td>
     </tr>
     </table>
