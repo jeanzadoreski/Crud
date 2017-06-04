@@ -45,7 +45,7 @@ if(isset($_POST['btn-save']))
 
 <div id="header">
 	<div id="content">
-    <label>Caddastro de Empresas</label>
+    <label>Cadastro de Empresas</label>
     </div>
 </div>
 <div id="body">
